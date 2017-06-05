@@ -1,4 +1,5 @@
 #coding:utf-8
+
 class Stack(object):
     '''
     堆栈先进后出
@@ -8,15 +9,14 @@ class Stack(object):
     peek方法取出最顶端的数据项，不删除
     '''
 
-    def __init__(self,str,stack = []):
-        self.str = str
+    def __init__(self,stack = []):
         self.stack = stack
 
     def pushit(self):
         '''
         往stack中压入数据项
         '''
-        self.stack.append(self.str)
+        self.stack.append(raw_input('输入新字符:').strip())
 
     def popit(self):
         '''
@@ -40,13 +40,17 @@ class Stack(object):
 
     def viewstack(self):
         return self.stack
+    CMDs = {'u':pushit,'o':popit,'p':peek,'v':viewstack}
+
+
 
 def main():
-    CMDs = {'u':pushit,'o':popit,'p':peek}
+    
     pr = '''
     p(u)sh
     p(o)p
     (p)eek
+    (v)iew
     (q)uit
 
     enter choice:'''
@@ -64,7 +68,9 @@ def main():
                 break
             if choice == 'q':
                 break
-            
+            s = Stack()
+            CMDs[choice]()
+
 
 if __name__ == '__main__':
     main()
