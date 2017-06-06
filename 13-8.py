@@ -9,26 +9,33 @@ class Stack(object):
     peek方法取出最顶端的数据项，不删除
     '''
 
-    def __init__(self,stack = []):
+    def __init__(self,stack=[]):
         self.stack = stack
 
     def pushit(self):
         '''
         往stack中压入数据项
         '''
-        self.stack.append(raw_input('输入新字符:').strip())
+        self.stack.append(raw_input('please input str:').strip())
+        return self.stack
 
     def popit(self):
         '''
         删除一个数据项
         '''
-        if hasattr(self.stack,'pop'):
-            self.stack.pop()
+        if self.isempty() == 0:
+            if hasattr(self.stack,'pop'):
+                self.stack.pop()
+            else:
+                del self.stack[-1]
         else:
-            del self.stack[-1]
+            print 'stack is null'
         return self.stack
 
     def isempty(self):
+        '''
+        判断stack是否为空
+        '''
         if len(self.stack) == 0:
             a = 1
         else:
@@ -36,43 +43,49 @@ class Stack(object):
         return a
 
     def peek(self):
+        '''
+        取出堆栈顶端的数据项
+        '''
         return self.stack[-1]
 
     def viewstack(self):
+        '''
+        显示堆栈内容
+        '''
         return self.stack
+        
     CMDs = {'u':pushit,'o':popit,'p':peek,'v':viewstack}
 
-
-
-def main():
+    def main(self):
+        
+        pr = '''
+        p(u)sh
+        p(o)p
+        (p)eek
+        (v)iew
+        (q)uit
     
-    pr = '''
-    p(u)sh
-    p(o)p
-    (p)eek
-    (v)iew
-    (q)uit
-
-    enter choice:'''
-
-    while True:
+        enter choice:'''
+    
         while True:
-            try:
-                choice = raw_input(pr).strip().lower()
-            except (EOFError,KeyboardInterrupt,IndexError):
-                choice = 'q'
-            print '\nYou picked:[%s]'%choice
-            if choice not in 'uovq':
-                print 'Invalid option,try again'
-            else:
-                break
+            while True:
+                try:
+                    choice = raw_input(pr).strip().lower()
+                except (EOFError,KeyboardInterrupt,IndexError):
+                    choice = 'q'
+                print '\nYou picked:[%s]'%choice
+                if choice not in 'uovpq':
+                    print 'Invalid option,try again'
+                else:
+                    break
             if choice == 'q':
                 break
-            s = Stack()
-            CMDs[choice]()
+            else:
+                print self.CMDs[choice](self)
 
 
 if __name__ == '__main__':
-    main()
+    s = Stack([1,2,3,4,5])
+    print s.main()
 
         
