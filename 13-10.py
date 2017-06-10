@@ -1,6 +1,8 @@
-#coding:utf-8
+# coding:utf-8
 
 class Fifo_lifo(object):
+    
+
     '''
     同时具备FIFO和LIFO操作行为的数据结构
     实现以下方法：
@@ -9,7 +11,8 @@ class Fifo_lifo(object):
     3、pushit():列表尾部加上一个新元素
     4、popit():返回并删除列表中最后一个元素
     '''
-    def __init__(self, stack = []):
+
+    def __init__(self, stack=[]):
         self.stack = stack
 
     def shift(self):
@@ -22,7 +25,7 @@ class Fifo_lifo(object):
         '''
         列表头部压入一个新元素
         '''
-        return self.stack.insert(0,raw_input('please input a str:'))
+        return self.stack.insert(0, raw_input('please input a str:'))
 
     def pushit(self):
         '''
@@ -39,7 +42,7 @@ class Fifo_lifo(object):
     def viewstack(self):
         return self.stack
 
-    CMDs = {'s':shift,'u':unshift,'p':pushit,'o':popit,'v':viewstack}
+    CMDs = {'s': shift, 'u': unshift, 'p': pushit, 'o': popit, 'v': viewstack}
 
     def main(self):
         pr = '''
@@ -54,9 +57,9 @@ class Fifo_lifo(object):
             while True:
                 try:
                     choice = raw_input(pr).strip().lower()
-                except (EOFError,KeyboardInterrupt,IndexError):
+                except (EOFError, KeyboardInterrupt, IndexError):
                     choice = 'q'
-                print '\nYou picked:[%s]'%choice
+                print '\nYou picked:[%s]' % choice
                 if choice not in 'supovq':
                     print 'Invalid option,try again'
                 else:
@@ -65,7 +68,8 @@ class Fifo_lifo(object):
                 break
             else:
                 print self.CMDs[choice](self)
-    
+
+
 if __name__ == '__main__':
-    s = Fifo_lifo([1,3,5,7,9])
+    s = Fifo_lifo([1, 3, 5, 7, 9])
     s.main()
