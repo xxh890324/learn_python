@@ -44,16 +44,18 @@ class User(object):
         用户名称属性，列表存储用户名下的购物车
         '''
         self.name = name
-        self.user_cart = []
+        self.user_cart = {}
 
     def add_cart(self, Cart):
-        self.user_cart.append(Cart.name)
+        self.user_cart[Cart.name] = Cart.total
 
     def del_crat(self, Cart):
-        self.user_cart.remove(Cart.name)
+        self.user_cart.pop(Cart.name)
 
     def show_cart(self):
-        print '%s名下有购物车:%s,总金额为:' % (self.name, self.user_cart)
+        print '%s名下有以下购物车:' % self.name
+        for i in self.user_cart:
+            print '购物车名：%s,购物车金额:%f' % (i, self.user_cart[i])
 
 
 def main():
@@ -61,12 +63,17 @@ def main():
     item2 = Item('Phone', 2000)
     item3 = Item('Computer', 3000)
     c1 = Cart('cart1')
+    c2 = Cart('cart2')
     c1.add_item(item1, 2)
     c1.add_item(item2, 3)
     c1.add_item(item3, 4)
+    c2.add_item(item1, 10)
+    c2.del_item(item1)
     c1.show_item()
+    c2.show_item()
     u1 = User('xxh')
     u1.add_cart(c1)
+    u1.add_cart(c2)
     u1.show_cart()
 
 if __name__ == '__main__':
