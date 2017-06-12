@@ -1,6 +1,6 @@
 # coding:utf-8
 '''
-如果方法为keys，返回keys本身，则程序无穷递归下去
+方法为keys，返回keys本身，则程序无穷递归下去
 可以将方法名改掉，其他不变，则返回的就是父类的keys方法
 '''
 class SortedKeyDict(dict):

@@ -41,7 +41,7 @@ class Cart(object):
 class User(object):
     def __init__(self, name):
         '''
-        用户名称属性，列表存储用户名下的购物车
+        用户名称属性，字典存储用户名下的购物车以及购物车金额
         '''
         self.name = name
         self.user_cart = {}
