@@ -10,4 +10,4 @@ class SortedKeyDict(dict):
 
 d = SortedKeyDict((('zheng-cai', 67), ('hui-jun', 48), ('xin-yi', 21)))
 print 'By iterator:'.ljust(12), [key for key in d]
-print 'By keys():'.ljust(12), d.keys()
+print 'By keys():'.ljust(12), d.keys_son()
