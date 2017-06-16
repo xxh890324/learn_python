@@ -9,7 +9,7 @@ class Stack(object):
     peek方法取出最顶端的数据项，不删除
     '''
 
-    def __init__(self,stack=[]):
+    def __init__(self, stack=[]):
         self.stack = stack
 
     def pushit(self):
@@ -24,7 +24,7 @@ class Stack(object):
         删除一个数据项
         '''
         if self.isempty() == 0:
-            if hasattr(self.stack,'pop'):
+            if hasattr(self.stack, 'pop'):
                 self.stack.pop()
             else:
                 del self.stack[-1]
@@ -54,7 +54,7 @@ class Stack(object):
         '''
         return self.stack
         
-    CMDs = {'u':pushit,'o':popit,'p':peek,'v':viewstack}
+    CMDs = {'u': pushit, 'o': popit, 'p': peek, 'v': viewstack}
 
     def main(self):
         
@@ -71,9 +71,9 @@ class Stack(object):
             while True:
                 try:
                     choice = raw_input(pr).strip().lower()
-                except (EOFError,KeyboardInterrupt,IndexError):
+                except (EOFError, KeyboardInterrupt,IndexError):
                     choice = 'q'
-                print '\nYou picked:[%s]'%choice
+                print '\nYou picked:[%s]' % choice
                 if choice not in 'uovpq':
                     print 'Invalid option,try again'
                 else:
@@ -85,7 +85,7 @@ class Stack(object):
 
 
 if __name__ == '__main__':
-    s = Stack([1,2,3,4,5])
+    s = Stack([1, 2, 3, 4, 5])
     print s.main()
 
         

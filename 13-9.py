@@ -29,7 +29,7 @@ class Queue(object):
         '''
         return self.queue
 
-    CMDs = {'e':enqueue,'d':dequeue,'v':viewqueue}
+    CMDs = {'e': enqueue, 'd': dequeue, 'v': viewqueue}
 
     def main(self):
         pr = '''
@@ -42,9 +42,9 @@ class Queue(object):
             while True:
                 try:
                     choice = raw_input(pr).strip().lower()
-                except (EOFError,KeyboardInterrupt,IndexError):
+                except (EOFError, KeyboardInterrupt, IndexError):
                     choice = 'q'
-                print '\nYou picked:[%s]'%choice
+                print '\nYou picked:[%s]' % choice
                 if choice not in 'edvq':
                     print 'Invalid option,try again'
                 else:
@@ -55,8 +55,5 @@ class Queue(object):
                 print self.CMDs[choice](self)
 
 if __name__ == '__main__':
-    q = Queue([9,8,7,6,5])
+    q = Queue([9, 8, 7, 6, 5])
     q.main()
-
-
-    
