@@ -1,13 +1,33 @@
-#coding:utf-8
+# coding:utf-8
+import collections
+'''
+class Cpu(object):
 
-class Foo(object):
-    price = 50
-    def how_much_of_book(self,n):
-        print(self)
-        return self.price*n
+    def __init__(self, xinhao='', num=0):
+        self.xinhao = xinhao
+        self.num = num
+        #self.dict1 = {}
+'''
 
-foo = Foo()
-print foo.how_much_of_book(8)
-print dir(Foo)
+Cpu = collections.namedtuple('Cpu', ['xinhao', 'num'])
+
         
-        
+class Computer(object):
+
+    def __init__(self):
+        #self.cpu = Cpu(xinhao='', num=0)
+        self.dict1 = {}
+
+    def add_cpu(self, name, amount=1):
+        if name not in self.dict1:
+            self.dict1[name] = amount
+        else:
+            self.dict1[name] += amount
+        return self.dict1
+
+
+computer = Computer()
+computer.add_cpu('inter', 4) 
+computer.add_cpu('inter', 5)
+computer.add_cpu('amd', 4) 
+print computer.dict1
