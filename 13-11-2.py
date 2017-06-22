@@ -48,36 +48,42 @@ class Cart(object):
 
 
 class User(object):
-    def __init__(self, name):
+    def __init__(self, name, cart_name):
         '''
         用户名称属性，字典存储用户名下的购物车以及购物车金额
         '''
         self.name = name
         self.user_cart = {}
-        self.cart = Cart(name='')
+        self.cart = Cart(cart_name)
 
-    def add_cart(self, name):
-        self.cart.name = name
-        self.user_cart[self.cart.name] = self.cart.total
+    def add_cart(self):
+        self.user_cart[self.name] = [self.cart.name, self.cart.total]
 
     def del_crat(self, name):
         self.cart.name = name
         self.user_cart.pop(self.cart.name)
 
     def show_cart(self):
-        print '%s名下有以下购物车:' % self.name
         for i in self.user_cart:
-            print '购物车名：%s,购物车金额:%f' % (i, self.user_cart[i])
+            print '姓名:%s,购物车名：%s,购物车金额:%f' % (i, self.user_cart[i][0], self.user_cart[i][1])
 
 
 def main():
-    user1 = User('小明')
-    user1.cart.add_item('apple', 20, 10)
-    user1.cart.add_item('book', 3, 10)
+    user1 = User('xiaoming', 'c1')
+    user1.cart.add_item('apple', 20, 2)
+    user1.cart.add_item('book', 2, 3)
     user1.cart.show_item()
-    user1.add_cart('car1')
-    user1.add_cart('car2')
+    user1.add_cart()
     user1.show_cart()
+    print id(user1)
+
+    user1 = User('xiaoming', 'c2')
+    user1.cart.add_item('aa', 10, 4)
+    user1.cart.add_item('bb', 100, 6)
+    user1.cart.show_item()
+    user1.add_cart()
+    user1.show_cart()
+    print id(user1)
 
 
 if __name__ == '__main__':
