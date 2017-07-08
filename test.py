@@ -30,4 +30,4 @@ computer = Computer()
 computer.add_cpu('inter', 4) 
 computer.add_cpu('inter', 5)
 computer.add_cpu('amd', 4) 
-print computer.dict1
+print computer.dict11
